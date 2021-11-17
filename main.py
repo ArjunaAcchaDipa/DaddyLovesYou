@@ -28,7 +28,7 @@ async def on_message(message):
 
     prefix = "$"
 
-    help = ["Try send `$joke` instead `$myLife`", "Stop sending `$myLife` as a joke, cuz its not" , "I mean, your life isnt a joke. Jokes has meaning"]
+    help = ["Try send `$joke` or `$injoke` for Indonesian Jokes instead `$myLife`", "Stop sending `$myLife` as a joke, cuz its not" , "I mean, your life isnt a joke. Jokes has meaning"]
 
     if message.content.startswith(prefix):
         command = message.content.split(prefix)[1]
