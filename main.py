@@ -47,10 +47,13 @@ async def on_message(message):
         if not (message.content[indexCharacter].lower() == "w" or message.content[indexCharacter].lower() == "k"):
           isXIXI = False
           break
-      
+
       newMessage = ""
       if isXIXI:
-        for character in message.content:
+        messageContent = message.content
+        author = str(message.author).split("#")[0]
+        await message.channel.purge(limit=1)
+        for character in messageContent:
           if character == "W":
             newMessage += "X"
           elif character == "w":
@@ -59,12 +62,9 @@ async def on_message(message):
             newMessage += "I"
           else:
             newMessage += "i"
-      
-      author = str(message.author).split("#")[0]
-      
-      newMessage = author + " said: " + newMessage
-      await message.channel.purge(limit=1)
-      await message.channel.send(newMessage)
+        
+        newMessage = author + " said: " + newMessage
+        await message.channel.send(newMessage)
 
 keep_alive()
 client.run(os.getenv("TOKEN"))
