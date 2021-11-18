@@ -41,6 +41,30 @@ async def on_message(message):
           await message.channel.send(random.choice(help))
         else:
           await message.channel.send("Wrong command!\nTry send `$help`")
+    elif message.content.lower().startswith("w") or message.content.lower().startswith("k"):
+      isXIXI = True
+      for indexCharacter in range (len(message.content)):
+        if not (message.content[indexCharacter].lower() == "w" or message.content[indexCharacter].lower() == "k"):
+          isXIXI = False
+          break
+      
+      newMessage = ""
+      if isXIXI:
+        for character in message.content:
+          if character == "W":
+            newMessage += "X"
+          elif character == "w":
+            newMessage += "x"
+          elif character == "K":
+            newMessage += "I"
+          else:
+            newMessage += "i"
+      
+      author = str(message.author).split("#")[0]
+      
+      newMessage = author + " said: " + newMessage
+      await message.channel.purge(limit=1)
+      await message.channel.send(newMessage)
 
 keep_alive()
 client.run(os.getenv("TOKEN"))
