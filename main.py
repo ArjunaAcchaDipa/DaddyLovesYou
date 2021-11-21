@@ -30,6 +30,14 @@ async def on_message(message):
 
     help = ["Try send `$joke` or `$injoke` for Indonesian Jokes instead `$myLife`", "Stop sending `$myLife` as a joke, cuz its not" , "I mean, your life isnt a joke. Jokes has meaning"]
 
+    commandHelp = """Hello, this is a Discord Bot to satisfy your needs in dad jokes.
+
+All that you need know is our prefixes is `$` and you can get the joke in english by typing `$joke` or in indonesia by typing `$injoke`.
+If you need any help, try typing `$help`
+
+One thing that you need to know, I will convert your `wkwk` into `xixi` because, thats what dads do right?
+Enjoy the joke!"""
+
     if message.content.startswith(prefix):
         command = message.content.split(prefix)[1]
         if command == "joke":
@@ -39,6 +47,8 @@ async def on_message(message):
           await message.channel.send(file=discord.File("joke.png"))
         elif command == "help":
           await message.channel.send(random.choice(help))
+        elif command == "command":
+          await message.channel.send(commandHelp)
         else:
           await message.channel.send("Wrong command!\nTry send `$help`")
     elif message.content.lower().startswith("w") or message.content.lower().startswith("k"):
