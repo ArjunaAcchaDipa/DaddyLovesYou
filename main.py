@@ -49,7 +49,13 @@ Enjoy the joke!"""
           await message.channel.send(random.choice(help))
         elif command == "command":
           await message.channel.send(commandHelp)
-        else:
+        elif command == "flip":
+          result = random.randint(1,2)
+          if result == 1:
+            await message.channel.send("Head!")
+          else:
+            await message.channel.send("Tail!")
+        elif not any(char in ["(", ")", "=", ","] for char in command):
           await message.channel.send("Wrong command!\nTry send `$help`")
     elif message.content.lower().startswith("w") or message.content.lower().startswith("k"):
       isXIXI = True
